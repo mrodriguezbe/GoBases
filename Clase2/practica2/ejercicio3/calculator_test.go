@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestXxx(t *testing.T) {
+func TestSalary(t *testing.T) {
 	t.Run("Empleado tipo A", func(t *testing.T) {
 		var minutes int = 1000
 		var class = "A"
