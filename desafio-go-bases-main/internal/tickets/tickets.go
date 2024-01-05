@@ -14,7 +14,7 @@ type Ticket struct {
 	Email       string `csv:Email`
 	Destination string `csv:Destination`
 	Hour        string `csv:Hour`
-	Extra       string `csv:Extra`
+	Price       string `csv:Extra`
 }
 
 var Tickets []Ticket = []Ticket{}
@@ -40,7 +40,7 @@ func GetTotalTickets(destination string) (int, error) {
 		}
 	}
 	if aux == 0 {
-		return 0, errors.New("No se han encontrado destinos")
+		return 0, errors.New("Unknown destination")
 	}
 	return aux, nil
 }
@@ -49,7 +49,7 @@ func GetCountByPeriod(time string) (int, error) {
 	result := countCoincidences(time)
 
 	if result == 0 {
-		return result, errors.New("Unkown time")
+		return result, errors.New("Unknown time")
 	}
 
 	return result, nil
@@ -91,5 +91,6 @@ func AverageDestination(destination string) (int, error) {
 	if err != nil {
 		return travels, err
 	}
+
 	return (travels * 100) / len(Tickets), nil
 }
